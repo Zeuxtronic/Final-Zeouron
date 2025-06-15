@@ -120,7 +120,6 @@ local G = Contents.NewGui("ZeoTool",100)
 
 local notifs = {}
 Contents.Notification = function(title, desc, time)
-    print(#notifs)
     local notification = Instance.new("Frame",G)
     notification.BackgroundColor3 = Contents.GetTheme().BgC
     notification.Size = UDim2.new(0,300,0,125)
@@ -148,6 +147,7 @@ Contents.Notification = function(title, desc, time)
     desclabel.BackgroundTransparency = 1
     desclabel.TextXAlignment = "Left"
     desclabel.TextYAlignment = "Top"
+    desclabel.TextWrapped = true
     desclabel.ZIndex = 102
     
     local timebar = Instance.new("Frame",notification)
