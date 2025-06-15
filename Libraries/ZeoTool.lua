@@ -67,7 +67,7 @@ Contents.DownloadAsset = function(asset)
         return ""
     end
 end
-Contents.GetAsset = function(asset)
+Contents.LoadAsset = function(asset)
 	local fakeasset = getcustomasset or getsynasset
 	if isfile("Zeouron/Assets/"..asset) then
 		return fakeasset("Zeouron/Assets/"..asset)
