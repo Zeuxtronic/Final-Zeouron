@@ -55,9 +55,7 @@ Contents.ConstructFolder = function()
 		writefile("Zeouron/Settings/Developer.txt", "false")
 	end
 end
-Contents.Github = function() 
-    return "https://raw.githubusercontent.com/Zeuxtronic/Final-Zeouron/refs/heads/main/"
-end
+Contents.Github = "https://raw.githubusercontent.com/Zeuxtronic/Final-Zeouron/refs/heads/main/"
 Contents.DownloadAsset = function(asset)
     local succ,res = pcall(function() return game:HttpGet(Contents.Github().."Assets/"..asset) end)
     if succ and res then
@@ -196,6 +194,12 @@ Contents.Notification = function(title, desc, time)
         end
     end,time,notification)
 	table.insert(notifs,notification)
+end
+Contents.GetFragment = function(fragment)
+    return loadstring(game:HttpGet(Contents.Github.."Fragments/"..fragment..".lua"))()
+end
+Contents.GetLibrary = function(lib)
+	return loadstring(game:HttpGet(Contents.Github.."Library/"..lib..".lua"))()
 end
 
 Contents.Popups = {}
@@ -405,9 +409,4 @@ Contents.Popups.YN = function(Title, Description, yesfunc, nofunc)
     Contents.AddRound(YESButton, 0.02)
     Contents.AddRound(NOButton, 0.02)
 end
-
-wait(1)
-
-Contents.Popups.YN("title", "desc", function() end)
-
 return Contents
