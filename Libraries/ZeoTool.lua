@@ -198,6 +198,9 @@ end
 Contents.GetFragment = function(fragment)
     return loadstring(game:HttpGet(Contents.Github.."Fragments/"..fragment..".lua"))()
 end
+Contents.GetConfig = function(config)
+    return loadstring(game:HttpGet(Contents.Github.."Configs/"..config..".txt"))()
+end
 Contents.GetLibrary = function(lib)
 	return loadstring(game:HttpGet(Contents.Github.."Library/"..lib..".lua"))()
 end
