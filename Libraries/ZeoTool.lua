@@ -202,7 +202,7 @@ Contents.GetConfig = function(config)
     return loadstring(game:HttpGet(Contents.Github.."Configs/"..config..".txt"))()
 end
 Contents.GetLibrary = function(lib)
-	return loadstring(game:HttpGet(Contents.Github.."Library/"..lib..".lua"))()
+	return loadstring(game:HttpGet(Contents.Github.."Libraries/"..lib..".lua"))()
 end
 
 Contents.Popups = {}
