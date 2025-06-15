@@ -57,7 +57,7 @@ Contents.ConstructFolder = function()
 end
 Contents.Github = "https://raw.githubusercontent.com/Zeuxtronic/Final-Zeouron/refs/heads/main/"
 Contents.DownloadAsset = function(asset)
-    local succ,res = pcall(function() return game:HttpGet(Contents.Github().."Assets/"..asset) end)
+    local succ,res = pcall(function() return game:HttpGet(Contents.Github.."Assets/"..asset) end)
     if succ and res then
        	writefile("Zeouron/Assets/"..asset, res)
         wait(0.1)
