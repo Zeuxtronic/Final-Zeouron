@@ -15,7 +15,7 @@ ZeouronGui.ResetOnSpawn = false
 local Contents = {}
 
 Contents.GetGuiParent = GetGuiParent
-Contents.NewGui = function(name)
+Contents.NewGui = function(name,zindex)
     for _,v in pairs(ZeouronGui:GetChildren()) do
         if v.Name == name then
             v:Destroy()
@@ -25,6 +25,7 @@ Contents.NewGui = function(name)
     local G = Instance.new("ScreenGui",ZeouronGui)
     G.Name = name
     G.ResetOnSpawn = false
+    G.DisplayOrder = zindex
     return G
 end
 Contents.Tween = function(tble, times)
@@ -115,7 +116,7 @@ Contents.GetTheme = function()
     }
 end
 
-local G = Contents.NewGui("ZeoTool")
+local G = Contents.NewGui("ZeoTool",100)
 
 local notifs = {}
 Contents.Notification = function(title, desc, time)
