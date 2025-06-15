@@ -72,7 +72,7 @@ Contents.LoadAsset = function(asset)
 	if isfile("Zeouron/Assets/"..asset) then
 		return fakeasset("Zeouron/Assets/"..asset)
 	else
-   		return fakeasset(DownloadAsset(asset))
+   		return fakeasset(Contents.DownloadAsset(asset))
    	end
 end
 Contents.AddBlur = function(frame)
