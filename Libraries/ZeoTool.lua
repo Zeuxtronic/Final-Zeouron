@@ -1,5 +1,7 @@
 local lp = game.Players.LocalPlayer
 
+local UIS = game:GetService("UserInputService")
+
 local GetGuiParent = gethui or function() return game.CoreGui end
 
 for _,v in pairs(GetGuiParent():GetChildren()) do
@@ -14,6 +16,8 @@ ZeouronGui.ResetOnSpawn = false
 
 local Contents = {}
 
+
+Contents.IsMobile = table.find({Enum.Platform.IOS, Enum.Platform.Android}, UIS:GetPlatform()),
 Contents.GetGuiParent = GetGuiParent
 Contents.NewGui = function(name,zindex)
     for _,v in pairs(ZeouronGui:GetChildren()) do
@@ -225,7 +229,7 @@ Contents.Popups.OK = function(Title, Description)
 
     PopupFrame.Size = UDim2.new(0,360,0,0)
     PopupFrame.Position = UDim2.new(0.5,0,0.5,0)
-    PopupFrame.BackgroundColor3 = Contents.GetTheme().BgC
+    PopupFrame.BackgroundColor3 = Contents.GetTheme().DarkerC
     PopupFrame.ZIndex = 50
     PopupFrame.AnchorPoint = Vector2.new(0.5,0.5)
     
@@ -267,7 +271,7 @@ Contents.Popups.OK = function(Title, Description)
 
     OKButton.Size = UDim2.new(1,-10,0,25)
     OKButton.Position = UDim2.new(0,5,1,-30)
-    OKButton.BackgroundColor3 = Contents.GetTheme().DarkerC
+    OKButton.BackgroundColor3 = Contents.GetTheme().DarkC
     OKButton.Text = "Okay"
     OKButton.Font = Contents.GetTheme().Font
     OKButton.TextScaled = true
@@ -316,7 +320,7 @@ Contents.Popups.YN = function(Title, Description, yesfunc, nofunc)
 
     PopupFrame.Size = UDim2.new(0,360,0,0)
     PopupFrame.Position = UDim2.new(0.5,0,0.5,0)
-    PopupFrame.BackgroundColor3 = Contents.GetTheme().BgC
+    PopupFrame.BackgroundColor3 = Contents.GetTheme().DarkerC
     PopupFrame.ZIndex = 50
     PopupFrame.AnchorPoint = Vector2.new(0.5,0.5)
     
@@ -358,7 +362,7 @@ Contents.Popups.YN = function(Title, Description, yesfunc, nofunc)
 
     YESButton.Size = UDim2.new(0.5,-3,0,25)
     YESButton.Position = UDim2.new(0,5,1,-30)
-    YESButton.BackgroundColor3 = Contents.GetTheme().DarkerC
+    YESButton.BackgroundColor3 = Contents.GetTheme().DarkC
     YESButton.Text = "Yes"
     YESButton.Font = Contents.GetTheme().Font
     YESButton.TextScaled = true
@@ -369,7 +373,7 @@ Contents.Popups.YN = function(Title, Description, yesfunc, nofunc)
 
     NOButton.Size = UDim2.new(0.5,-12,0,25)
     NOButton.Position = UDim2.new(0.5,6,1,-30)
-    NOButton.BackgroundColor3 = Contents.GetTheme().DarkerC
+    NOButton.BackgroundColor3 = Contents.GetTheme().DarkC
     NOButton.Text = "No"
     NOButton.Font = Contents.GetTheme().Font
     NOButton.TextScaled = true
