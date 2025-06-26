@@ -17,7 +17,7 @@ ZeouronGui.ResetOnSpawn = false
 local Contents = {}
 
 
-Contents.IsMobile = table.find({Enum.Platform.IOS, Enum.Platform.Android}, UIS:GetPlatform()),
+Contents.IsMobile = table.find({Enum.Platform.IOS, Enum.Platform.Android}, UIS:GetPlatform())
 Contents.GetGuiParent = GetGuiParent
 Contents.NewGui = function(name,zindex)
     for _,v in pairs(ZeouronGui:GetChildren()) do
