@@ -5,9 +5,6 @@
     <img alt="Zeouron" src="./README/logo.png">
   </picture>
 </p>
-<h3 align="center">
-  <span style="font-size: 12px">by Zeuxtronic</span>
-</h3>
 
 ## What can i use it for?
 You can use Zeouron for exploiting (on roblox), on the following games:
@@ -24,6 +21,10 @@ You can use Zeouron for exploiting (on roblox), on the following games:
 ```luau
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Zeuxtronic/Final-Zeouron/refs/heads/main/Loader.lua", true))()
 ```
+
+## Credit
+Maintainer, Creator, Owner - Zeuxtronic
+Inspriration - vapev4
 
 ## Support
 If you run into any issues you can tell us in our [discord](https://discord.com/invite/BjrHC26rUP).
