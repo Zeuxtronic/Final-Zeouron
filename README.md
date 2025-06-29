@@ -5,9 +5,9 @@
     <img alt="Zeouron" src="./README/logo.png">
   </picture>
 </p>
-<h2 align="center">
+<h3 align="center">
   <span style="font-size: 12px">by Zeuxtronic</span>
-</h2>
+</h3>
 
 ## What can i use it for?
 You can use Zeouron for exploiting (on roblox), on the following games:
