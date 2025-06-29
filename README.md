@@ -32,6 +32,4 @@ Here are some common fixes:
 
 - Not executing:
 Most of the time, on krnl, you will need to execute it switch (no idea why)
-If that doesnt work, try deleting the folder "Zeouron" in your executors workspace
-
-Your executor might not be supported, try switching to our suggested executors.
+If that doesnt work, try deleting the folder "Zeouron" in your executors workspace. If you arent using our suggested executors try switching to our suggested executors.
