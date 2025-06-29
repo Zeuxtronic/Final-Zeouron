@@ -6,7 +6,7 @@
   </picture>
 </p>
 <h2 align="center">
-  <small>by Zeuxtronic</small>
+  <span style="font-size: 12px">by Zeuxtronic</span>
 </h2>
 
 ## What can i use it for?
