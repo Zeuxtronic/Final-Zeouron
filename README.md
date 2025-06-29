@@ -17,10 +17,21 @@ You can use Zeouron for exploiting (on roblox), on the following games:
 
 ## How to use
 1. Use an executor. If you dont have one, these are some recommended executors:
-- Mobile: Krnl (krnl.cat)
+- Mobile: Krnl (krnl.cat), Delta (deltaexploits.gg)
 - Desktop: Swift (getswift.net)
 
 2. Execute the following code while in a game:
 ```luau
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Zeuxtronic/Final-Zeouron/refs/heads/main/Loader.lua", true))()
 ```
+
+## Support
+If you run into any issues you can tell us in our discord.
+
+Here are some common fixes:
+
+- Not executing:
+Most of the time, on krnl, you will need to execute it switch (no idea why)
+If that doesnt work, try deleting the folder "Zeouron" in your executors workspace
+
+Your executor might not be supported, try switching to our suggested executors.
