@@ -26,7 +26,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/Zeuxtronic/Final-Zeou
 ```
 
 ## Support
-If you run into any issues you can tell us in our discord.
+If you run into any issues you can tell us in our [discord](https://discord.com/invite/BjrHC26rUP).
 
 Here are some common fixes:
 
