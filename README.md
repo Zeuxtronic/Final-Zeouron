@@ -16,8 +16,7 @@ You can use Zeouron for exploiting (on roblox), on the following games:
 - Robot 64
 
 ## How to use
-1. Use an executor.
-If you dont have one, these are some recommended executors.
+1. Use an executor. If you dont have one, these are some recommended executors:
 - Mobile: Krnl (krnl.cat)
 - Desktop: Swift (getswift.net)
 
