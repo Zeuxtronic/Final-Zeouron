@@ -1,5 +1,6 @@
 <h2 align="center">
-  test
+align="center">
+  Zeouron
   <br/>
-  by Zeuxtronic
+  <small>by Zeuxtronic</small>
 </h2>
