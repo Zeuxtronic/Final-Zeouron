@@ -33,5 +33,6 @@ If you run into any issues you can tell us in our [discord](https://discord.com/
 Here are some common fixes:
 
 - Not executing:
-Most of the time, on krnl, you will need to execute it switch (no idea why)
+Most of the time, on krnl, you will need to execute it twice (no idea why)
+
 If that doesnt work, try deleting the folder "Zeouron" in your executors workspace. If you arent using our suggested executors try switching to our suggested executors.
