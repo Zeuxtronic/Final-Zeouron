@@ -15,7 +15,7 @@ You can use Zeouron for exploiting (on roblox), on the following games:
 ## How to use
 1. Use an executor. If you dont have one, these are some recommended executors:
 - Mobile: Krnl (krnl.cat), Delta (deltaexploits.gg)
-- Desktop: Swift (getswift.net)
+- Desktop: Swift (getswift.gg)
 
 2. Execute the following code while in a game:
 ```luau
