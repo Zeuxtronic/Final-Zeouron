@@ -19,7 +19,7 @@ You can use Zeouron for exploiting (on roblox), on the following games:
 
 2. Execute the following code while in a game:
 ```luau
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Zeuxtronic/Final-Zeouron/refs/heads/main/Loader.lua", true))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Zeuxtronic/Zeouron/refs/heads/main/Loader.lua", true))()
 ```
 
 ## Credit
