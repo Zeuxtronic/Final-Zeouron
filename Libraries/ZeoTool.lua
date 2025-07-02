@@ -60,7 +60,7 @@ Contents.ConstructFolder = function()
 		writefile("Zeouron/Settings/Developer.txt", "false")
 	end
 end
-Contents.Github = "https://raw.githubusercontent.com/Zeuxtronic/Final-Zeouron/refs/heads/main/"
+Contents.Github = "https://raw.githubusercontent.com/Zeuxtronic/Zeouron/refs/heads/main/"
 Contents.DownloadAsset = function(asset)
     local succ,res = pcall(function() return game:HttpGet(Contents.Github.."Assets/"..asset) end)
     if succ and res then
@@ -201,12 +201,28 @@ Contents.Notification = function(title, desc, time)
 	table.insert(notifs,notification)
 end
 Contents.GetFragment = function(fragment)
-    return loadstring(game:HttpGet(Contents.Github.."Fragments/"..fragment..".lua"))()
+    if isfile("Zeouron/Fragments/"..fragment) then
+        return loadstring(readfile("Zeouron/Fragments/"..fragment))()
+    else
+    	writefile("Zeouron/Fragments/"..fragment, game:HttpGet(Contents.Github.."Fragments/"..fragment..".lua"))
+     	return loadstring(readfile("Zeouron/Fragments/"..fragment))()
+    end
 end
 Contents.GetConfig = function(config)
-    return loadstring(game:HttpGet(Contents.Github.."Configs/"..config..".txt"))()
+    if isfile("Zeouron/Configurations/"..config) then
+        return loadstring(readfile("Zeouron/Fragments/"..config))()
+    else
+    	writefile("Zeouron/Configurations/"..config, game:HttpGet(Contents.Github.."Configs/"..config..".lua"))
+     	return loadstring(readfile("Zeouron/Configurations/"..config))()
+    end
 end
 Contents.GetLibrary = function(lib)
+    if isfile("Zeouron/Libraries/"..lib) then
+        return loadstring(readfile("Zeouron/Libraries/"..lib))()
+    else
+    	writefile("Zeouron/Libraries/"..lib, game:HttpGet(Contents.Github.."Libraries/"..lib..".lua"))
+     	return loadstring(readfile("Zeouron/Libraries/"..lib))()
+    end
 	return loadstring(game:HttpGet(Contents.Github.."Libraries/"..lib..".lua"))()
 end
 
