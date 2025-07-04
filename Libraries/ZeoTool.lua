@@ -38,27 +38,37 @@ Contents.Tween = function(tble, times)
     PlayThis:Play()
 end
 Contents.ConstructFolder = function()
-	if not isfolder("Zeouron/Assets") then
-	    makefolder("Zeouron/Assets")
-	end
-	if not isfile("Zeouron/Settings/Onoff.txt") then
-		writefile("Zeouron/Settings/Onoff.txt", "true")
-	end
-	if not isfile("Zeouron/Settings/MainColor.txt") then
-		writefile("Zeouron/Settings/MainColor.txt", "130,35,175")
-	end
-	if not isfile("Zeouron/Settings/BgColor.txt") then
-		writefile("Zeouron/Settings/BgColor.txt", "10,10,10")
-	end
-	if not isfile("Zeouron/Settings/Size.txt") then
-		writefile("Zeouron/Settings/Size.txt", "1")
-	end
-	if not isfile("Zeouron/Settings/Font.txt") then
-		writefile("Zeouron/Settings/Font.txt", "Sarpanch")
-	end
-	if not isfile("Zeouron/Settings/Developer.txt") then
-		writefile("Zeouron/Settings/Developer.txt", "false")
-	end
+	local add = function(path,c,f)
+    	if not isfile(path) then
+         	if not f then
+        		writefile(path,c)
+          	else
+           		makefolder(path)
+           	end
+        end
+    end
+	add("Zeouron/README.txt",[[Hello there Zeouron user.
+
+If you are trying to modify Zeourons code, it will get replaced and all your work will be gone.
+
+If you want to prevent that, you need to have developer mode on.
+You can do that by modifying this boolean: false
+
+Keep in mind of the LICENSE, of course.
+Good luck on whatever you're trying to do.]])
+	add("Zeouron/Version.txt","b")
+ 
+ 	add("Zeouron/Libraries","",true)
+ 	add("Zeouron/Configurations","",true)
+ 	add("Zeouron/Fragments","",true)
+ 	add("Zeouron/Assets","",true)
+	
+ 	add("Zeouron/Profiles/Settings.txt",game:GetService("HttpService"):JSONEncode({
+        MainColor = "130,35,175",
+        BackgroundColor = "10,10,10",
+        Font = "Sarpanch",
+        OnoffButton = true,
+    }))
 end
 Contents.Github = "https://raw.githubusercontent.com/Zeuxtronic/Zeouron/refs/heads/main/"
 Contents.DownloadAsset = function(asset)
@@ -99,7 +109,6 @@ Contents.AddRound = function(frame,roundyness)
     round.CornerRadius = roundyness and UDim.new(0,roundyness) or UDim.new(0,5)
     return Round
 end
-
 constructcolor = function(str)
     local split = string.split(str,",")
     return Color3.fromRGB(tonumber(split[1]),tonumber(split[2]), tonumber(split[3]))
@@ -107,15 +116,21 @@ end
 halvecolor = function(color, num)
     return Color3.new(color.R /num, color.G /num, color.B /num)
 end
+Contents.GetSettings = function()
+    local s = game:GetService("HttpService"):JSONDecode(readfile("Zeouron/Profiles/Settings.txt"))
+    s.MainColor = constructcolor(s.MainColor)
+    s.BackgroundColor = constructcolor(s.BackgroundColor)
+    return s
+end
 Contents.GetTheme = function()
+    local s = Contents.GetSettings()
     return {
-        Font = Enum.Font[readfile("Zeouron/Settings/Font.txt")],
-        Color = constructcolor(readfile("Zeouron/Settings/MainColor.txt")),
-        DarkC = halvecolor(constructcolor(readfile("Zeouron/Settings/MainColor.txt")), 2.5),
-        DarkerC = halvecolor(halvecolor(constructcolor(readfile("Zeouron/Settings/MainColor.txt")), 2.5),1.5),
-        DarkestC = halvecolor(halvecolor(constructcolor(readfile("Zeouron/Settings/MainColor.txt")), 2.5),2.5),
-        BlackC = Color3.fromRGB(30,30,30),
-        BgC = constructcolor(readfile("Zeouron/Settings/BgColor.txt")),
+        Font = s.Font,
+        Color = s.MainColor,
+        DarkC = halvecolor(s.MainColor, 2.5),
+        DarkerC = halvecolor(halvecolor(s.MainColor, 2.5),1.5),
+        DarkestC = halvecolor(halvecolor(s.MainColor, 2.5),2.5),
+        BgC = s.BackgroundColor,
         DiscordLink = "https://discord.com/invite/BjrHC26rUP"
     }
 end
@@ -200,29 +215,33 @@ Contents.Notification = function(title, desc, time)
     end,time,notification)
 	table.insert(notifs,notification)
 end
-Contents.GetFragment = function(fragment)
-    if isfile("Zeouron/Fragments/"..fragment..".lua") then
-        return loadstring(readfile("Zeouron/Fragments/"..fragment..".lua"))()
+Contents.RunScript = function(foldername,name,githubfolder)
+    local githubfolder = githubfolder or foldername
+    if isfile("Zeouron/"..foldername.."/"..name..".lua") then
+        local succ,res = pcall(loadstring(readfile("Zeouron/"..foldername.."/"..name..".lua")))
+        if not succ then
+            warn(res)
+       	else
+       		return res
+        end
     else
-    	writefile("Zeouron/Fragments/"..fragment, game:HttpGet(Contents.Github.."Fragments/"..fragment..".lua"))
-     	return loadstring(readfile("Zeouron/Fragments/"..fragment..".lua"))()
+    	writefile("Zeouron/"..foldername.."/"..name..".lua", game:HttpGet(Contents.Github..githubfolder.."/"..name..".lua"))
+     	local succ,res = pcall(loadstring(readfile("Zeouron/"..foldername.."/"..name..".lua")))
+        if not succ then
+            warn(res)
+       	else
+       		return res
+        end
     end
+end
+Contents.GetFragment = function(fragment)
+    return Contents.RunScript("Fragments",fragment)
 end
 Contents.GetConfig = function(config)
-    if isfile("Zeouron/Configurations/"..config..".lua") then
-        return loadstring(readfile("Zeouron/Fragments/"..config..".lua"))()
-    else
-    	writefile("Zeouron/Configurations/"..config, game:HttpGet(Contents.Github.."Configs/"..config..".lua"))
-     	return loadstring(readfile("Zeouron/Configurations/"..config..".lua"))()
-    end
+    return Contents.RunScript("Configurations",config,"Configs")
 end
 Contents.GetLibrary = function(lib)
-    if isfile("Zeouron/Libraries/"..lib..".lua") then
-        return loadstring(readfile("Zeouron/Libraries/"..lib..".lua"))()
-    else
-    	writefile("Zeouron/Libraries/"..lib, game:HttpGet(Contents.Github.."Libraries/"..lib..".lua"))
-     	return loadstring(readfile("Zeouron/Libraries/"..lib..".lua"))()
-    end
+    return Contents.RunScript("Libraries",lib)
 end
 
 Contents.Popups = {}
@@ -432,4 +451,5 @@ Contents.Popups.YN = function(Title, Description, yesfunc, nofunc)
     Contents.AddRound(YESButton, 0.02)
     Contents.AddRound(NOButton, 0.02)
 end
+
 return Contents
