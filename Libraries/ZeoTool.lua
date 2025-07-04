@@ -29,7 +29,7 @@ Contents.NewGui = function(name,zindex)
     local G = Instance.new("ScreenGui",ZeouronGui)
     G.Name = name
     G.ResetOnSpawn = false
-    G.DisplayOrder = zindex
+    G.DisplayOrder = zindex and zindex +2000000000 or 2000000000
     return G
 end
 Contents.Tween = function(tble, times)
@@ -116,7 +116,10 @@ end
 halvecolor = function(color, num)
     return Color3.new(color.R /num, color.G /num, color.B /num)
 end
-Contents.GetSettings = function()
+Contents.GetSettings = function(raw)
+    if raw then
+        return game:GetService("HttpService"):JSONDecode(readfile("Zeouron/Profiles/Settings.txt"))
+    end
     local s = game:GetService("HttpService"):JSONDecode(readfile("Zeouron/Profiles/Settings.txt"))
     s.MainColor = constructcolor(s.MainColor)
     s.BackgroundColor = constructcolor(s.BackgroundColor)
@@ -220,7 +223,7 @@ Contents.RunScript = function(foldername,name,githubfolder)
     if isfile("Zeouron/"..foldername.."/"..name..".lua") then
         local succ,res = pcall(loadstring(readfile("Zeouron/"..foldername.."/"..name..".lua")))
         if not succ then
-            warn(res)
+            error(res)
        	else
        		return res
         end
@@ -228,7 +231,7 @@ Contents.RunScript = function(foldername,name,githubfolder)
     	writefile("Zeouron/"..foldername.."/"..name..".lua", game:HttpGet(Contents.Github..githubfolder.."/"..name..".lua"))
      	local succ,res = pcall(loadstring(readfile("Zeouron/"..foldername.."/"..name..".lua")))
         if not succ then
-            warn(res)
+            error(res)
        	else
        		return res
         end
