@@ -29,9 +29,9 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/Zeuxtronic/Zeouron/re
 ```
 
 ## Credit
-Maintainer, Creator, Owner - Zeuxtronic
+Creator, Owner - Zeuxtronic
 
-Inspriration - vapev4
+UI Inspiration - Vape v4
 
 ## Support
 If you run into any issues you can tell us in our [discord](https://discord.com/invite/BjrHC26rUP).
